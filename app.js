@@ -14,6 +14,7 @@ submit.on("click", function() {
     var holderL = [];
     var holderW = [];
     var holderB = [];
+    var wordMatches =[];
     var multiplier = false;
 
     d3.select(".match-total").text("");
@@ -58,7 +59,7 @@ submit.on("click", function() {
         };
         
         if (temp.join("") === holderW[i].toLowerCase()) {
-            d3.select(".word-matches").append().text(`${holderW[i]} `);
+            wordMatches.push(holderW[i]);
             matchCount++;
             
             for (let x = 0; x < broken.length; x++) {
@@ -69,6 +70,7 @@ submit.on("click", function() {
         };
     };
 
+    d3.select(".word-matches").text(`(${wordMatches})`);
 
     // BONUS LOOP
     for (let i = 0; i < holderB.length; i++) {
